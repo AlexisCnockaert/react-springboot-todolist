@@ -1,0 +1,154 @@
+body {
+    background-image: url("../public/bg.jpg"); /* ✅ old working path */
+    color: #8f42e6;
+    font-family: "Orbitron", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 40px;
+}
+
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.App {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 80px 100px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #8f42e6, 0 0 40px #8f42e6;
+    backdrop-filter: blur(10px);
+    padding-top: 10px;
+}
+
+.todos{
+    font-size: 1.8rem;
+    color: #fafafa;
+    text-shadow: 0 0 20px #8f42e6, 0 0 40px #8f42e6, 0 0 60px #8f42e6;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+.neon-title {
+    font-size: 3rem;
+    color: #fafafa;
+    text-shadow: 0 0 20px #8f42e6, 0 0 40px #8f42e6, 0 0 60px #8f42e6;
+    margin-bottom: 100px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.intro-text {
+    color: #fafafa;
+    font-size: 1.7rem;
+    max-width: 1150px;
+    margin: 10px auto 90px -300px;
+    text-align: left;
+    line-height: 1.6;
+    animation: fadeInUp 1.5s ease-out, glowPulse 3s infinite alternate;
+}
+
+.glow {
+    color: #b48fff;
+    text-shadow: 0 0 6px #8f42e6, 0 0 15px #8f42e6, 0 0 25px #8f42e6;
+    font-weight: bold;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 5px #8f42e6, 0 0 15px #8f42e6;
+    }
+    100% {
+        text-shadow: 0 0 15px #8f42e6, 0 0 30px #8f42e6;
+    }
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.neon-input {
+    width: 300px;
+    background: black;
+    border: 2px solid #8f42e6;
+    color: #b48fff;
+    padding: 20px;
+    font-size: 1.2rem;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #8f42e6, 0 0 30px #8f42e6;
+}
+
+.neon-button {
+    margin-left: 15px;
+    padding: 20px 35px;
+    border: 2px solid #8f42e6;
+    background: black;
+    color: #b48fff;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px #8f42e6, 0 0 40px #8f42e6;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.neon-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #8f42e6, 0 0 50px #8f42e6;
+}
+
+/* Todo list and items */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    margin: 15px auto;
+    padding: 20px;
+    max-width: 400px;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: #ffffff;
+    box-shadow: 0 0 15px #000, 0 0 25px #000;
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.todo-item:hover {
+    background: rgba(0, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+.todo-item.done {
+    text-decoration: line-through;
+    color: #888;
+    border-color: #888;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.05);
+}
