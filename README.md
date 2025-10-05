@@ -1,6 +1,6 @@
 #  Todo App
 
-A glowing **Todo List** application built with **React**, **Spring Boot**, and **MongoDB**.
+A glowing **Todo List** application built with **React**, **Spring Boot**, and **MongoDB**.\
 The goal: create a futuristic productivity assistant that guide the user through its tasks.
 
 ## Tech Stack
