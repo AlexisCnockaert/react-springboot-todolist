@@ -13,15 +13,13 @@ The goal: create a futuristic productivity assistant that guide the user through
 - ☕ Spring Boot (Java 21)
 - MongoDB for persistent task storage
 - RESTful API for todo management
----
 
-## 💡 Features (in progress)
+##  Features (in progress)
 
 -  Add, list, and toggle todos  
 -  Real-time sync between frontend and backend  
 -  (Upcoming) AI assistant to expand todos with structured guidance
 
----
 
 
 
