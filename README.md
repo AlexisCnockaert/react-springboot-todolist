@@ -1,11 +1,11 @@
-# ⚡️  Todo App
+#  Todo App
 
 A glowing **Todo List** application built with **React**, **Spring Boot**, and **MongoDB**.
 The goal: create a futuristic productivity assistant that guide the user through its tasks.
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 **Frontend**
 - ⚛️ React (modern hooks + functional components)
@@ -19,9 +19,9 @@ The goal: create a futuristic productivity assistant that guide the user through
 
 ## 💡 Features (in progress)
 
-- ✅ Add, list, and toggle todos  
-- 🔄 Real-time sync between frontend and backend  
-- 🤖 (Upcoming) AI assistant to expand todos with structured guidance
+-  Add, list, and toggle todos  
+-  Real-time sync between frontend and backend  
+-  (Upcoming) AI assistant to expand todos with structured guidance
 
 ---
 
