@@ -1,5 +1,5 @@
 body {
-    background-image: url("../public/bg.jpg"); /* ✅ old working path */
+    background-image: url("../assets/bg.jpg");
     color: #8f42e6;
     font-family: "Orbitron", sans-serif;
     display: flex;
@@ -50,7 +50,7 @@ body {
     color: #fafafa;
     font-size: 1.7rem;
     max-width: 1150px;
-    margin: 10px auto 90px -300px;
+    margin: 10px auto 90px -500px;
     text-align: left;
     line-height: 1.6;
     animation: fadeInUp 1.5s ease-out, glowPulse 3s infinite alternate;
