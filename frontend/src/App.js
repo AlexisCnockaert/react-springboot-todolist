@@ -6,7 +6,7 @@ function App() {
     const [newTodo, setNewTodo] = useState("");
 
     const fetchTodos = () => {
-        fetch("http://localhost:8080/todos")
+        fetch("http://localhost:8080/api/todos")
             .then((res) => res.json())
             .then((data) => setTodos(data))
             .catch((err) => console.error(err));
@@ -19,7 +19,7 @@ function App() {
     const addTodo = () => {
         if (newTodo.trim() === "") return;
 
-        fetch("http://localhost:8080", {
+        fetch("http://localhost:8080/api/todos", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newTodo),
@@ -32,7 +32,7 @@ function App() {
     };
 
     const markDone = (id) => {
-        fetch(`http://localhost:8080/${id}/done`, {
+        fetch(`http://localhost:8080/api/todos/${id}/toggle`, {
             method: "PUT",
         })
             .then(() => fetchTodos())

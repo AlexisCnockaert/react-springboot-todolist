@@ -1,40 +1,50 @@
 package com.example.todo.controller;
 
-import com.example.todo.model.Todo;
-import com.example.todo.repository.TodoRepository;
+import com.example.todo.dto.TodoRequest;
+import com.example.todo.dto.TodoResponse;
+import com.example.todo.service.TodoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/api/todos")
 public class TodoController {
 
     @Autowired
-    private TodoRepository todoRepository;
+    private TodoService todoService;
 
-    @GetMapping("/todos")
-    public List<Todo> getAllTodos() {
-        return todoRepository.findAll();
+    @GetMapping
+    public ResponseEntity<List<TodoResponse>> getAllTodos() {
+        List<TodoResponse> todos = todoService.getAllTodos();
+        return ResponseEntity.ok(todos);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TodoResponse> getTodoById(@PathVariable String id) {
+        TodoResponse todo = todoService.getTodoById(id);
+        return ResponseEntity.ok(todo);
     }
 
     @PostMapping
-    public Todo addTodo(@RequestBody String title) {
-        Todo todo = new Todo(title.replace("\"", ""));
-        return todoRepository.save(todo);
+    public ResponseEntity<TodoResponse> createTodo(@Valid @RequestBody TodoRequest request) {
+        TodoResponse createdTodo = todoService.createTodo(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdTodo);
     }
 
-    @PutMapping("/{id}/done")
-    public Todo markDone(@PathVariable String id) {
-        Todo todo = todoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Todo not found"));
-        todo.setDone(!todo.isDone());
-        return todoRepository.save(todo);
+    @PutMapping("/{id}/toggle")
+    public ResponseEntity<TodoResponse> toggleTodoDone(@PathVariable String id) {
+        TodoResponse updatedTodo = todoService.toggleTodoDone(id);
+        return ResponseEntity.ok(updatedTodo);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTodo(@PathVariable String id) {
-        todoRepository.deleteById(id);
+    public ResponseEntity<Void> deleteTodo(@PathVariable String id) {
+        todoService.deleteTodo(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -50,7 +50,7 @@ body {
     color: #fafafa;
     font-size: 1.7rem;
     max-width: 1150px;
-    margin: 10px auto 90px -500px;
+    margin: 10px auto 90px auto;
     text-align: left;
     line-height: 1.6;
     animation: fadeInUp 1.5s ease-out, glowPulse 3s infinite alternate;
