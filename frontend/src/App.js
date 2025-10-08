@@ -1,42 +1,83 @@
 import React, { useEffect, useState } from "react";
-import "./styles/App.css";
+import "./styles/app.css";
 
 function App() {
     const [todos, setTodos] = useState([]);
     const [newTodo, setNewTodo] = useState("");
+    const [loading, setLoading] = useState(false); // to prevent double clicks
+    const [error, setError] = useState(null);
 
-    const fetchTodos = () => {
-        fetch("http://localhost:8080/api/todos")
-            .then((res) => res.json())
-            .then((data) => setTodos(data))
-            .catch((err) => console.error(err));
+    const API_BASE_URL = "http://localhost:8080/api/todos";
+    const fetchTodos = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const response = await fetch(API_BASE_URL);
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch todos: ${response.status}`);
+            }
+            const data = await response.json();
+            setTodos(data);
+        } catch (err) {
+            console.error("Error fetching todos:", err);
+            setError("Failed to load todos. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
         fetchTodos();
     }, []);
 
-    const addTodo = () => {
+    const addTodo = async () => {
         if (newTodo.trim() === "") return;
 
-        fetch("http://localhost:8080/api/todos", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newTodo),
-        })
-            .then(() => {
-                setNewTodo("");
-                fetchTodos();
-            })
-            .catch((err) => console.error(err));
+        try {
+            setLoading(true);
+            setError(null);
+
+            const todoRequest = {
+                title: newTodo.trim()
+            };
+
+            const response = await fetch(API_BASE_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(todoRequest),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to create todo: ${response.status}`);
+            }
+            setNewTodo("");
+            await fetchTodos();
+        } catch (err) {
+            console.error("Error adding todo:", err);
+            setError("Failed to add todo. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
-    const markDone = (id) => {
-        fetch(`http://localhost:8080/api/todos/${id}/toggle`, {
-            method: "PUT",
-        })
-            .then(() => fetchTodos())
-            .catch((err) => console.error(err));
+
+    const markDone = async (id) => {
+        try {
+            setError(null);
+            const response = await fetch(`${API_BASE_URL}/${id}/toggle`, {
+                method: "PUT",
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to update todo: ${response.status}`);
+            }
+
+            await fetchTodos();
+        } catch (err) {
+            console.error("Error updating todo:", err);
+            setError("Failed to update todo. Please try again.");
+        }
     };
 
     return (
