@@ -119,7 +119,7 @@ body {
     box-shadow: 0 0 25px #8f42e6, 0 0 50px #8f42e6;
 }
 
-/* Todo list and items */
+/* TodoItem list and items */
 .todo-list {
     list-style: none;
     padding: 0;

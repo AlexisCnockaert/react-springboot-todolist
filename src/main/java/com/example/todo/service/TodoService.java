@@ -29,13 +29,13 @@ public class TodoService {
     @Transactional(readOnly = true)
     public TodoResponse getTodoById(String id) {
         Todo todo = todoRepository.findById(id)
-                .orElseThrow(() -> new TodoNotFoundException("Todo not found with id: " + id));
+                .orElseThrow(() -> new TodoNotFoundException("TodoItem not found with id: " + id));
         return convertToResponse(todo);
     }
 
     public TodoResponse createTodo(TodoRequest request) {
         if (request.getTitle() == null || request.getTitle().trim().isEmpty()) {
-            throw new IllegalArgumentException("Todo title cannot be empty");
+            throw new IllegalArgumentException("TodoItem title cannot be empty");
         }
 
         Todo todo = new Todo(request.getTitle().trim());
@@ -45,7 +45,7 @@ public class TodoService {
 
     public TodoResponse toggleTodoDone(String id) {
         Todo todo = todoRepository.findById(id)
-                .orElseThrow(() -> new TodoNotFoundException("Todo not found with id: " + id));
+                .orElseThrow(() -> new TodoNotFoundException("TodoItem not found with id: " + id));
 
         todo.setDone(!todo.isDone());
         Todo updatedTodo = todoRepository.save(todo);
@@ -54,7 +54,7 @@ public class TodoService {
 
     public void deleteTodo(String id) {
         if (!todoRepository.existsById(id)) {
-            throw new TodoNotFoundException("Todo not found with id: " + id);
+            throw new TodoNotFoundException("TodoItem not found with id: " + id);
         }
         todoRepository.deleteById(id);
     }
