@@ -1,7 +1,7 @@
 package com.example.todo.controller;
 
-import com.example.todo.dto.TodoRequest;
-import com.example.todo.dto.TodoResponse;
+import com.example.todo.TodoRequest;
+import com.example.todo.TodoDTO;
 import com.example.todo.service.TodoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,26 +19,26 @@ public class TodoController {
     private TodoService todoService;
 
     @GetMapping
-    public ResponseEntity<List<TodoResponse>> getAllTodos() {
-        List<TodoResponse> todos = todoService.getAllTodos();
+    public ResponseEntity<List<TodoDTO>> getAllTodos() {
+        List<TodoDTO> todos = todoService.getAllTodos();
         return ResponseEntity.ok(todos);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TodoResponse> getTodoById(@PathVariable String id) {
-        TodoResponse todo = todoService.getTodoById(id);
+    public ResponseEntity<TodoDTO> getTodoById(@PathVariable String id) {
+        TodoDTO todo = todoService.getTodoById(id);
         return ResponseEntity.ok(todo);
     }
 
     @PostMapping
-    public ResponseEntity<TodoResponse> createTodo(@Valid @RequestBody TodoRequest request) {
-        TodoResponse createdTodo = todoService.createTodo(request);
+    public ResponseEntity<TodoDTO> createTodo(@Valid @RequestBody TodoRequest request) {
+        TodoDTO createdTodo = todoService.createTodo(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTodo);
     }
 
     @PutMapping("/{id}/toggle")
-    public ResponseEntity<TodoResponse> toggleTodoDone(@PathVariable String id) {
-        TodoResponse updatedTodo = todoService.toggleTodoDone(id);
+    public ResponseEntity<TodoDTO> toggleTodoDone(@PathVariable String id) {
+        TodoDTO updatedTodo = todoService.toggleTodoDone(id);
         return ResponseEntity.ok(updatedTodo);
     }
 
