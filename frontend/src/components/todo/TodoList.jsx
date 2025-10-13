@@ -1,15 +1,23 @@
 import React from "react";
-import "../../styles/todolist.css"
-import TodoItem from "./TodoItem.jsx";
+import TodoItem from './TodoItem';
 
-function TodoList({ todos, onToggle }) {
+const TodoList = ({ todos, onToggle, loading }) => {
+    if (loading && todos.length === 0) {
+        return <p className="loading-text">Loading todos...</p>;
+    }
+
     return (
         <ul className="todo-list">
             {todos.map((todo) => (
-                <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    onToggle={onToggle}
+                    loading={loading}
+                />
             ))}
         </ul>
     );
-}
+};
 
 export default TodoList;

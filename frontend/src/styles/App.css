@@ -1,7 +1,8 @@
 body {
-    background-image: url("../assets/bg.jpg");
+    background-image: url("../assets/bg_2.jpg");
+    background-size: 100%;
     color: #8f42e6;
-    font-family: "Orbitron", sans-serif;
+    font-family: "BBH Sans Hegarty", sans-serif;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -38,19 +39,30 @@ body {
 }
 
 .neon-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 800;
     color: #fafafa;
     text-shadow: 0 0 20px #8f42e6, 0 0 40px #8f42e6, 0 0 60px #8f42e6;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
+
+.intro-desc {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fafafa;
+    text-shadow: 0 0 20px #8f42e6, 0 0 40px #8f42e6, 0 0 60px #8f42e6;    margin-bottom: 100px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 
 .intro-text {
     color: #fafafa;
     font-size: 1.7rem;
     max-width: 1150px;
-    margin: 10px auto 90px auto;
+    margin: 0 auto 90px auto;
     text-align: left;
     line-height: 1.6;
     animation: fadeInUp 1.5s ease-out, glowPulse 3s infinite alternate;
