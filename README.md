@@ -1,7 +1,7 @@
 #  ToDone
 
 
-A glowing **TodoItem List** application built with **React**, **Spring Boot**, and **MongoDB**.\
+A glowing **To Do List** application built with **React**, **Spring Boot**, and **MongoDB**.\
 The goal: create a futuristic productivity assistant that guide the user through its tasks.
 
 ## Tech Stack
