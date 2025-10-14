@@ -1,7 +1,7 @@
 #  ToDone
 
 
-A glowing **To Do List** application built with **React**, **Spring Boot**, and **MongoDB**.\
+A glowing **To Do List** application built with **React**, **Spring Boot** and **NoSQL(MongoDB)** implementing **AI Model Features**, .\
 The goal: create a futuristic productivity assistant that guide the user through its tasks.
 
 ## Tech Stack
@@ -17,7 +17,7 @@ The goal: create a futuristic productivity assistant that guide the user through
 
 ##  Features (in progress)
 
--  Add, list, and toggle todos  
+-  Add, list, delete and toggle todos  
 -  Real-time sync between frontend and backend  
 -  (Upcoming) AI assistant to expand todos with structured guidance
 
