@@ -155,6 +155,16 @@ body {
     justify-content: space-between;
 }
 
+.todo-title {
+    flex: 1;
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
 .todo-item:hover {
     background: rgba(0, 255, 255, 0.15);
     transform: scale(1.05);

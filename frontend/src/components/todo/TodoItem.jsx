@@ -6,10 +6,11 @@ const TodoItem = ({ todo, onToggle, loading, onDelete }) => {
             className={`todo-item ${todo.done ? 'done' : ''}`}
 
         >
-            {todo.title}
+           <div  className="todo-title"> {todo.title} </div>
             <div className="todo-icons">
                    <div className="gg-check-r" onClick={() => !loading && onToggle(todo.id)}></div>
-                   <div className="gg-trash" onClick={() => !loading && onDelete(todo.id)}></div></div>
+                   <div className="gg-trash" onClick={() => !loading && onDelete(todo.id)}></div>
+           </div>
         </li>
 
     );
