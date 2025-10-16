@@ -3,10 +3,9 @@ package com.example.todo.service;
 import com.example.todo.TodoRequest;
 import com.example.todo.TodoDTO;
 import com.example.todo.exception.TodoNotFoundException;
-import com.example.todo.TodoMapper;
+import com.example.todo.TodoDTOMapper;
 import com.example.todo.model.Todo;
 import com.example.todo.repository.TodoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +17,9 @@ public class TodoService {
 
 
     private final TodoRepository todoRepository;
-    private final TodoMapper todoMapper;
+    private final TodoDTOMapper todoMapper;
 
-    public TodoService(TodoMapper todoMapper, TodoRepository todoRepository) {
+    public TodoService(TodoDTOMapper todoMapper, TodoRepository todoRepository) {
         this.todoMapper = todoMapper;
         this.todoRepository = todoRepository;
     }
@@ -39,10 +38,9 @@ public class TodoService {
     }
 
     public TodoDTO createTodo(TodoRequest request) {
-        if (request.getTitle() == null || request.getTitle().trim().isEmpty()) {
-            throw new IllegalArgumentException("Todo title cannot be empty");
+        if (todoRepository.existsByTitleIgnoreCase(request.getTitle().trim())) {
+            throw new IllegalArgumentException("A todo with this title already exists");
         }
-
         Todo todo = new Todo(request.getTitle().trim());
         Todo savedTodo = todoRepository.save(todo);
         return todoMapper.toResponse(savedTodo);

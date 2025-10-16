@@ -4,8 +4,8 @@ const TodoForm = ({ onAdd, loading }) => {
     const [newTodo, setNewTodo] = useState('');
 
     const handleSubmit = async (e) => {
+        console.log("qads");
         e.preventDefault();
-        if (newTodo.trim() === '') return;
 
         await onAdd(newTodo);
         setNewTodo('');
@@ -31,7 +31,7 @@ const TodoForm = ({ onAdd, loading }) => {
             <button
                 onClick={handleSubmit}
                 className="neon-button"
-                disabled={loading || newTodo.trim() === ''}
+                disabled={loading}
             >
                 {loading ? 'Adding...' : 'Add Todo'}
             </button>

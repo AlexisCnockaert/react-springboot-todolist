@@ -251,3 +251,13 @@ body {
   top: -7px;
   left: -2px;
 }
+
+.error-message {
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid #ff0000;
+    color: #ff6666;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}

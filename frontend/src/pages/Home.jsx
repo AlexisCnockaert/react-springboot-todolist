@@ -2,6 +2,7 @@ import React from 'react';
 import { useTodos } from '../hooks/useTodos';
 import TodoForm from '../components/todo/TodoForm';
 import TodoList from '../components/todo/TodoList';
+import ErrorMessage from '../components/ErrorMessage';
 
 const Home = () => {
     const { todos, loading, error, addTodo, toggleTodo, deleteTodo } = useTodos();
@@ -21,6 +22,8 @@ return (
 
             <div className="App">
                 <p className="todos">Todo List</p>
+                <ErrorMessage message={error} />
+
                 <TodoForm onAdd={addTodo} loading={loading}/>
 
                 <TodoList

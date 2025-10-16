@@ -21,18 +21,13 @@ export const useTodos = () => {
     }, []);
 
     const addTodo = async (title) => {
-        if (!title || title.trim() === '') {
-            setError('Todo title cannot be empty');
-            return;
-        }
-
         try {
             setLoading(true);
             setError(null);
             await todoService.createTodo(title);
             await fetchTodos();
         } catch (err) {
-            setError('Failed to add todo. Please try again.');
+            setError('Failed to add todo, please try again.');
             console.error('Error adding todo:', err);
         } finally {
             setLoading(false);
@@ -45,7 +40,7 @@ export const useTodos = () => {
             await todoService.toggleTodo(id);
             await fetchTodos();
         } catch (err) {
-            setError('Failed to update todo. Please try again.');
+            setError('Failed to update todo, please try again.');
             console.error('Error updating todo:', err);
         }
     };
@@ -56,7 +51,7 @@ export const useTodos = () => {
             await todoService.deleteTodo(id);
             await fetchTodos();
         } catch (err) {
-            setError('Failed to delete todo. Please try again.');
+            setError('Failed to delete todo, please try again.');
             console.error('Error deleting todo:', err);
         }
     };

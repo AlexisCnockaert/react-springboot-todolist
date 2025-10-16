@@ -1,11 +1,10 @@
 package com.example.todo;
 
-import com.example.todo.TodoDTO;
 import com.example.todo.model.Todo;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TodoMapper {
+public class TodoDTOMapper {
 
     public TodoDTO toResponse(Todo todo) {
         return new TodoDTO(
